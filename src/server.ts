@@ -5,7 +5,7 @@ import helmet from 'helmet'
 import cookieParser from 'cookie-parser'
 import config from "./config";
 import errorHandler from "./middleware/error-handler";
-
+import morganMiddleware from "./middleware/morgan-middleware";
 
 
 
@@ -31,7 +31,7 @@ export const createServer=()=>{
       
     const app=express();
     app.disable('x-powered-by')
-    .use(morgan('dev'))
+    .use(morganMiddleware)
     .use(helmet())
     .use(cors(corsOptions))
     .use(express.json())
